@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views>
+    <DetailView Id="AboutInfo_DetailView">
+      <Items>
+        <StaticText Id="AboutText" Text="XafApplication1&lt;br&gt;Версия  1.0.8842" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>
