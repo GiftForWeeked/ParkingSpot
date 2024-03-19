@@ -1,5 +1,29 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="XafApplication1">
+  <BOModel>
+    <Class Name="XafApplication1.Module.BusinessObjects.Offices" ImageName="BO_Customer" />
+    <Class Name="XafApplication1.Module.BusinessObjects.Parking" ImageName="BO_Order" />
+  </BOModel>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="17.2.4.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
+    <DetailView Id="Offices_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Offices">
+              <LayoutItem Id="Cabinet" HorizontalAlign="Center" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Offices_ListView">
+      <Columns>
+        <ColumnInfo Id="Renter" Index="0" Width="100" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="Cabinet" Index="1" SortIndex="0" SortOrder="Ascending" Width="64" MaxLength="4" />
+      </Columns>
+    </ListView>
   </Views>
 </Application>

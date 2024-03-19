@@ -15,9 +15,10 @@ using System.Text;
 namespace XafApplication1.Module.BusinessObjects
 {
     [DefaultClassOptions]
+    [DefaultProperty(nameof(Renter))]
     [ImageName("BO_Contact")]
     public class Offices : BaseObject
-    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
+    {
         public Offices(Session session)
             : base(session)
         {
@@ -25,7 +26,14 @@ namespace XafApplication1.Module.BusinessObjects
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+        }
+        [Association("Office-Parking")]
+        public XPCollection<Parking> ParkingSpots 
+        {
+            get
+            {
+                return GetCollection<Parking>(nameof(ParkingSpots));
+            } 
         }
         private string _renter;
         public string Renter
@@ -38,6 +46,14 @@ namespace XafApplication1.Module.BusinessObjects
         {
             get { return _cabinet; }
             set { SetPropertyValue(nameof(Cabinet), ref _cabinet, value); }
+        }
+        [VisibleInDetailView(false)]
+        public string ParkingList
+        {
+            get
+            {
+                return string.Join(", ", ParkingSpots.Select(x => x.ParkingSpotNumber));
+            }
         }
     }
 }
